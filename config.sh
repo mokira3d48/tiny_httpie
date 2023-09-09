@@ -24,9 +24,24 @@ cp "$PY_SCRIPT"    "$TARGET"
 PY_FILE="$TARGET/tihttp.py"
 CMD_NAME=/usr/bin/tihttp
 
+sudo chmod +x "$PY_FILE"
+
 if [ -e "$CMD_NAME" ]; then
 	echo "Old binary file detected, It must be removed, in first."
 	sudo rm "$CMD_NAME"
 	echo "OK!"
 fi
-sudo ln -s "$PY_FILE" "$CMD_NAME"
+# sudo ln -s "$PY_FILE" "$CMD_NAME"
+
+# if [[ ! $(python3 -m venv "$TARGET/env") ]]; then
+#	echo "You must to install python3-venv."
+#	sudo apt install python3-venv
+# fi
+
+source "$TARGET/env/bin/activate"
+
+# if [[ ! $(pipenv) ]]; then
+#    echo "pipenv not existent, so installing via pip..."
+#    pip install pipenv
+#    echo "...pipenv was installed?"
+# fi
